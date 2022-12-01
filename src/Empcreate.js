@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const EmpCreate = () => {
-  const [id_input_fm_1_first_name, firstnamechange] = useState("");
+  let [id_input_fm_1_first_name, firstnamechange] = useState("");
   const [id_input_fm_1_last_name, lastnamechange] = useState("");
   const [id_input_fm_1_title, titlechange] = useState("");
   const [id_input_fm_1_gender, genderchange] = useState("");
@@ -22,6 +22,26 @@ const EmpCreate = () => {
   const [active, activechange] = useState(true);
 
   const navigate = useNavigate();
+
+  const resetForm = () => {
+    firstnamechange("");
+    lastnamechange("");
+    titlechange("");
+    genderchange("");
+    nicchange("");
+    dateofbirthchange("");
+    contactnumberchange("");
+    emailchange("");
+    departmentchange("");
+    designationchange("");
+    nationalitychange("");
+    addresschange("");
+    countrychange("");
+    citychange("");
+    profilepicturechange("");
+    descriptionchange("");
+    remarkschange("");
+  };
 
   const handlesubmit = (e) => {
     e.preventDefault();
@@ -195,8 +215,7 @@ const EmpCreate = () => {
       value_description !== "" &&
       value_remarks !== "" &&
       value_active !== false
-    ) 
-{
+    )  {
       const empdata = {
         id_input_fm_1_first_name,
         id_input_fm_1_last_name,
@@ -288,7 +307,7 @@ const EmpCreate = () => {
                         onChange={(e) => titlechange(e.target.value)}
                         className="form-control"
                       >
-                        <option selected="true" disabled="disabled" value="">
+                        <option value={""}>
                           -select-
                         </option>
                         <option value={"1"}> Mr</option>
@@ -306,7 +325,7 @@ const EmpCreate = () => {
                         onChange={(e) => genderchange(e.target.value)}
                         className="form-control"
                       >
-                        <option selected="true" disabled="disabled" value="">
+                        <option selected="true"  value="">
                           -select-
                         </option>
                         <option value={"1"}> Male</option>
@@ -384,7 +403,7 @@ const EmpCreate = () => {
                         onChange={(e) => departmentchange(e.target.value)}
                         className="form-control"
                       >
-                        <option selected="true" disabled="disabled" value="">
+                        <option selected="true"  value="">
                           -select-
                         </option>
                         <option value={"1"}> Human resources</option>
@@ -406,7 +425,7 @@ const EmpCreate = () => {
                         onChange={(e) => designationchange(e.target.value)}
                         className="form-control"
                       >
-                        <option selected="true" disabled="disabled" value="">
+                        <option selected="true"  value="">
                           -select-
                         </option>
                         <option value={"1"}> Engineer</option>
@@ -429,7 +448,7 @@ const EmpCreate = () => {
                         onChange={(e) => nationalitychange(e.target.value)}
                         className="form-control"
                       >
-                        <option selected="true" disabled="disabled" value="">
+                        <option selected="true"  value="">
                           -select-
                         </option>
                         <option value={"1"}> Sri Lankan</option>
@@ -468,7 +487,7 @@ const EmpCreate = () => {
                         onChange={(e) => countrychange(e.target.value)}
                         className="form-control"
                       >
-                        <option selected="true" disabled="disabled" value="">
+                        <option selected="true"  value="">
                           -select-
                         </option>
                         <option value={"3"}>Sri Lanka</option>
@@ -491,7 +510,7 @@ const EmpCreate = () => {
                         onChange={(e) => citychange(e.target.value)}
                         className="form-control "
                       >
-                        <option selected="true" disabled="disabled" value="">
+                        <option selected="true"  value="">
                           -select-
                         </option>
                         <option value={"1"}>Galgamuwa</option>
@@ -574,9 +593,11 @@ const EmpCreate = () => {
                       <button className="btn btn-success" type="submit">
                         submit
                       </button>
-                      <button className="btn btn-danger" type="reset">
-                        Reset
-                      </button>
+                      <input
+                        className="btn btn-danger"
+                        type="reset"
+                        onClick={() => resetForm()}
+                      />
                       <Link to="/" className="btn btn-dark">
                         Back
                       </Link>

@@ -65,7 +65,7 @@ const EmpEdit = () => {
     };
       
 
-      fetch(""+empid,{
+      fetch("/saveEmployee"+empid,{
         method:"PUT",
         headers:{"content-type":"application/json"},
         body:JSON.stringify(empdata)

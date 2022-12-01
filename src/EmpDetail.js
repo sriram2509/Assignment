@@ -9,7 +9,7 @@ const EmpDetail = () => {
     const [empdata, empdatachange] = useState({});
 
     useEffect(() => {
-        fetch("" + empid).then((res) => {
+        fetch("/viewEmployee" + empid).then((res) => {
             return res.json();
         }).then((resp) => {
             empdatachange(resp);

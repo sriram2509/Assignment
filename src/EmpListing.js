@@ -13,7 +13,7 @@ const EmpListing = () => {
     }
     const Removefunction = (id) => {
         if (window.confirm('Do you want to remove?')) {
-            fetch("" + id, {
+            fetch("deactivateEmployee" + id, {
                 method: "DELETE"
             }).then((res) => {
                 alert('Removed successfully.')
